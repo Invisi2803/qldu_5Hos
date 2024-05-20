@@ -1,0 +1,56 @@
+/* Đây là file style.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.search-container,
+.management-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-container input,
+.management-buttons button {
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.search-container button,
+.management-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-container button:last-child,
+.management-buttons button:last-child {
+  margin-right: 0;
+}
+
+/* Hiệu ứng khi di chuột qua các nút */
+.search-container button:hover,
+.management-buttons button:hover {
+  background: #555;
+}
+
+/* Đặt màu nền cho nút khi được click (tùy chọn) */
+.search-container button:active,
+.management-buttons button:active {
+  background-color: #666;
+}
