@@ -1,0 +1,31 @@
+/* header.css */
+.navbar-custom {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.navbar-custom .nav-link {
+    color: #5D5D5D;
+    padding: 0.5rem 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.navbar-custom .nav-link:hover {
+    background-color: #e9ecef;
+    border-radius: 5px;
+}
+
+.logout {
+    margin-left: auto;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.main-content {
+    padding: 20px;
+    margin-top: 20px;
+}

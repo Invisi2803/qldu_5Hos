@@ -1,6 +1,6 @@
 <?php
 require '../php/db_config.php';
-$sql = "SELECT MANV, MATKHAU, HOTEN, NGAYSINH, GIOITINH, SODT, MAPHONGBAN, EMAIL FROM nhanvien";
+$sql = "SELECT * FROM nhanvien";
 $result = $conn->query($sql);
 $nhan_vien = [];
 

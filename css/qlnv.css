@@ -1,56 +1,140 @@
-/* Đây là file style.css */
+/* Thay đổi màu sắc và kiểu chữ */
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f4f4f4;
+  background-color: #f4f4f4;
+  color: #333;
 }
-
+label {
+  display: block; /* Đặt nhãn trên một dòng mới, trước input */
+  margin-bottom: 5px; /* Khoảng cách giữa nhãn và input */
+  font-weight: bold; /* Làm đậm nhãn để dễ nhận biết */
+}
 header {
-  background: #333;
+  background-color: #007bff;
   color: #fff;
-  padding: 10px 0;
+  padding: 20px;
   text-align: center;
 }
 
-.search-container,
-.management-buttons {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
+.search-container {
+  margin-top: -20px; /* Giảm giá trị margin-top */
+  text-align: center;
 }
 
-.search-container input,
-.management-buttons button {
+input[type="text"] {
   padding: 10px;
-  margin-right: 10px;
-  border: none;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
 }
 
-.search-container button,
-.management-buttons button {
+#search-button {
   padding: 10px 20px;
-  border: none;
   border-radius: 5px;
-  background: #333;
+  background-color: #000;
   color: #fff;
+  border: none;
   cursor: pointer;
 }
 
-.search-container button:last-child,
-.management-buttons button:last-child {
-  margin-right: 0;
+.management-buttons {
+  margin-top: 30px; /* Giảm giá trị margin-top */
+  text-align: center;
 }
 
-/* Hiệu ứng khi di chuột qua các nút */
-.search-container button:hover,
-.management-buttons button:hover {
-  background: #555;
+.management-buttons button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-/* Đặt màu nền cho nút khi được click (tùy chọn) */
-.search-container button:active,
-.management-buttons button:active {
-  background-color: #666;
+.form-popup {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 15px; /* Increased padding */
+  border-radius: 8px; /* Increased border radius */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+  width: 50%; /* Adjusted width */
+  max-width: 400px; /* Added max-width for better responsiveness */
+}
+
+.form-popup h1 {
+  text-align: center;
+  font-size: 18px; /* Increased font size */
+}
+
+.form-popup input[type="text"],
+.form-popup input[type="email"],
+.form-popup input[type="password"],
+.form-popup input[type="date"],
+.form-popup select {
+  width: 100%;
+  padding: 8px; /* Increased padding */
+  margin-bottom: 8px; /* Increased margin */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px; /* Increased font size */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Centers the buttons horizontally */
+  gap: 10px; /* Adds space between the buttons */
+}
+
+.form-popup button {
+  padding: 8px 15px; /* Increased padding */
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px; /* Increased font size */
+}
+
+.form-popup button[type="button"] {
+  background-color: #6c757d; /* Different color for the close button */
+}
+
+.form-popup button:hover {
+  background-color: #0056b3; /* Darker shade for hover effect on submit button */
+}
+
+.form-popup button[type="button"]:hover {
+  background-color: #5a6268; /* Darker shade for hover effect on close button */
+}
+
+.employee-list {
+  margin-top: 20px;
+}
+
+.employee-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employee-list th,
+.employee-list td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+footer {
+  background-color: #000;
+  color: #fff;
+  padding: 7px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
