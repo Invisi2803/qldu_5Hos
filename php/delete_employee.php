@@ -5,7 +5,6 @@ require '../php/db_config.php';
 $data = json_decode(file_get_contents("php://input"));
 
 if(isset($data->employeeId)) {
-    // Lấy employeeId từ dữ liệu POST
     $employeeId = $data->employeeId;
 }
 

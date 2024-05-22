@@ -1,33 +1,30 @@
 <?php
 require '../php/db_config.php';
 
-$data = json_decode(file_get_contents("php://input"), true);
 
-if (isset($data['employeeId'], $data['name'], $data['dob'], $data['gender'], $data['phone'], $data['dept'], $data['role'], $data['address'], $data['email'])) {
-    $employeeId = $data['employeeId'];
-    $name = $data['name'];
-    $dob = $data['dob'];
-    $gender = $data['gender'];
-    $phone = $data['phone'];
-    $dept = $data['dept'];
-    $role = $data['role'];
-    $address = $data['address'];
-    $email = $data['email'];
-
+$employeeId = $_POST['update-employee-id'];
+$employeeName = $_POST['update-employee-name'];
+$employeeDob = $_POST['update-employee-dob'];
+$employeeGender = $_POST['update-employee-gender'];
+$employeePhone = $_POST['update-employee-phone'];
+$employeeDept = $_POST['update-employee-dept'];
+$employeeAddress = $_POST['update-employee-address'];
+$employeeRole = $_POST['update-employee-role'];
+$employeeEmail = $_POST['update-employee-email'];
+if ($employeeDept === "Nhân sự") {$employeeDept = 1;}
+else if ($employeeDept === "DL&CNTT") {$employeeDept = 2;}
+else if ($employeeDept === "Truyền thông") { $employeeDept = 3;}
     $sql = "UPDATE nhanvien SET HOTEN = ?, NGAYSINH = ?, GIOITINH = ?, SODT = ?, MAPHONGBAN = ?, CHUCVU = ?, DIACHI = ?, EMAIL = ? WHERE MANV = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssss", $name, $dob, $gender, $phone, $dept, $role, $address, $email, $employeeId);
+    $stmt->bind_param("sssssssss", $employeeName, $employeeDob, $employeeGender, $employeePhone, $employeeDept, $employeeRole, $employeeAddress, $employeeEmail, $employeeId);
 
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
         echo "Cập nhật nhân viên thành công";
     } else {
-        echo "Không thể cập nhật nhân viên. Vui lòng thử lại sau.";
+        echo "Cập nhật không thành công;
     }
     $stmt->close();
     $conn->close();
-} else {
-    echo "Dữ liệu không hợp lệ";
-}
 ?>
