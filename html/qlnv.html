@@ -58,6 +58,37 @@
     </div>
 </form>
 </div>
+      <div class="form-popup" id="updateEmployeeForm">
+    <form id="update-employee-form" class="form-container" action="../php/update_employee.php" method="post">
+        <h1>CẬP NHẬT NHÂN VIÊN</h1>
+        <input type="text" id="update-employee-id" name="update-employee-id" placeholder="Mã NV" required readonly>
+        <input type="text" id="update-employee-name" name="update-employee-name" placeholder="Họ và tên" required>
+        <input type="date" id="update-employee-dob" name="update-employee-dob" placeholder="Ngày sinh" required>
+        <select id="update-employee-gender" name="update-employee-gender" required>
+            <option value="">Giới tính</option>
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+        </select>
+        <input type="text" id="update-employee-phone" name="update-employee-phone" placeholder="Số điện thoại" required>
+        <select id="update-employee-dept" name="update-employee-dept" required>
+            <option value="">Phòng ban</option>
+            <option value="Nhân sự">Nhân sự</option>
+            <option value="DL&CNTT">DL&CNTT</option>
+            <option value="Truyền thông">Truyền thông</option>
+        </select>
+        <select id="update-employee-role" name="update-employee-role" required>
+            <option value="">Chức vụ</option>
+            <option value="Nhân viên">Nhân viên</option>
+            <option value="Quản lý">Quản lý</option>
+        </select>
+        <input type="text" id="update-employee-address" name="update-employee-address" placeholder="Địa chỉ" required>
+        <input type="email" id="update-employee-email" name="update-employee-email" placeholder="Email" required>
+        <div class="button-container">
+            <button type="submit">Cập nhật</button>
+            <button type="button" onclick="closeUpdateForm()">Đóng</button>
+        </div>
+    </form>
+</div>
 
 
     <div class="employee-list">

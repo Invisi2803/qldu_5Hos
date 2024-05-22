@@ -1,41 +1,166 @@
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('../php/getEmployees.php')
-    .then(response => response.json())
-    .then(employees => {
-        const employeeListDiv = document.querySelector('.employee-list');
-        let tableHTML = "<table style='border-collapse: collapse; width: 100%;'>";
-        tableHTML += `
-            <tr>
-                <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Mã NV</th>
-                <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Tên</th>
-                <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Ngày sinh</th>
-            </tr>
-        `;
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('../html/header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading header:', error));
+});
 
-        employees.forEach(employee => {
+
+document.addEventListener('DOMContentLoaded', function() {
+    let selectedMANV = null;
+    let selectedEmployee = null;
+
+    fetch('../php/getEmployees.php')
+        .then(response => response.json())
+        .then(employees => {
+            const employeeListDiv = document.querySelector('.employee-list');
+            let tableHTML = "<table style='border-collapse: collapse; width: 100%;'>";
             tableHTML += `
-                <tr class="clickable-row" data-id="${employee.MANV}" style='background-color: #f2f2f2;'>
-                    <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.MANV}</td>
-                    <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.HOTEN}</td>
-                    <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.NGAYSINH}</td>
+                <tr>
+                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Mã NV</th>
+                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Tên</th>
+                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Ngày sinh</th>
+                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Email</th>
+                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Số điện thoại</th>
                 </tr>
             `;
-        });
 
-        tableHTML += "</table>";
-        employeeListDiv.innerHTML = tableHTML;
-
-        document.querySelectorAll('.clickable-row').forEach(row => {
-            row.addEventListener('click', function() {
-                // Xóa kiểu 'selected' khỏi tất cả các dòng khác
-                document.querySelectorAll('.clickable-row').forEach(otherRow => {
-                    otherRow.style.backgroundColor = ""; // Đặt lại màu nền
-                });
-
-                // Đặt màu nền cho dòng được click
-                this.style.backgroundColor = '#e0f7fa'; // Màu xanh lợt
+            employees.forEach(employee => {
+                tableHTML += `
+                    <tr class="clickable-row" data-id="${employee.MANV}" style='background-color: #f2f2f2;'>
+                        <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.MANV}</td>
+                        <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.HOTEN}</td>
+                        <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.NGAYSINH}</td>
+                        <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.EMAIL}</td>
+                        <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.SODT}</td>
+                    </tr>
+                `;
             });
-        });
-    })
-    .catch(error => console.error('Error:', error));
+
+            tableHTML += "</table>";
+            employeeListDiv.innerHTML = tableHTML;
+
+            document.querySelectorAll('.clickable-row').forEach(row => {
+                row.addEventListener('click', function() {
+                    document.querySelectorAll('.clickable-row').forEach(otherRow => {
+                        otherRow.style.backgroundColor = "";
+                    });
+                    selectedMANV = this.dataset.id; 
+                    selectedEmployee = employees.find(employee => employee.MANV === selectedMANV);               
+                    this.style.backgroundColor = '#e0f7fa';
+                });
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
+    const deleteButton = document.getElementById('delete-employee');
+    deleteButton.addEventListener('click', function() {
+        const selectedEmployeeId = selectedMANV;
+        if (selectedEmployeeId) {
+            const confirmation = confirm('Bạn có chắc chắn muốn xóa nhân viên này không?');
+            if (confirmation) {
+                deleteEmployee(selectedEmployeeId);
+            }
+        } else {
+            alert('Vui lòng chọn nhân viên để xóa.');
+        }
+    });
+
+    const updateButton = document.getElementById('update-employee');
+    updateButton.addEventListener('click', function() {
+        if (selectedEmployee) {
+            openUpdateForm(selectedEmployee);
+        } else {
+            alert('Vui lòng chọn nhân viên để cập nhật.');
+        }
+    });
 });
+
+
+
+function openForm() {
+    document.getElementById("addEmployeeForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("addEmployeeForm").style.display = "none";
+}
+
+function openUpdateForm(employee) {
+    document.getElementById('update-employee-id').value = employee.MANV;
+    document.getElementById('update-employee-name').value = employee.HOTEN;
+    document.getElementById('update-employee-dob').value = employee.NGAYSINH;
+    document.getElementById('update-employee-gender').value = employee.GIOITINH;
+    document.getElementById('update-employee-phone').value = employee.SODT;
+    document.getElementById('update-employee-dept').value = employee.TENPHONG;
+    document.getElementById('update-employee-role').value = employee.CHUCVU;
+    document.getElementById('update-employee-address').value = employee.DIACHI;
+    document.getElementById('update-employee-email').value = employee.EMAIL;
+    document.getElementById('updateEmployeeForm').style.display = 'block';
+}
+
+function closeUpdateForm() {
+    document.getElementById('updateEmployeeForm').style.display = 'none';
+}
+
+document.getElementById('add-employee-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+
+    fetch('../php/add_employee.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); 
+        window.location.reload();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+document.getElementById('update-employee-form').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+
+    var formData = new FormData(this); 
+
+    fetch('../php/update_employee.php', {
+        method: 'POST',
+        body: formData 
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); 
+        window.location.reload(); 
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+
+
+
+function deleteEmployee(employeeId) {
+    fetch('../php/delete_employee.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ employeeId: employeeId })
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); 
+        window.location.reload();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
