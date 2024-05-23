@@ -1,5 +1,5 @@
 <?php
-require '../php/db_config.php';
+require '../../php/db_config.php';
 
 
 $employeeId = $_POST['update-employee-id'];
@@ -23,7 +23,7 @@ else if ($employeeDept === "Truyền thông") { $employeeDept = 3;}
     if ($stmt->affected_rows > 0) {
         echo "Cập nhật nhân viên thành công";
     } else {
-        echo "Cập nhật không thành công;
+        echo "Cập nhật không thành công";
     }
     $stmt->close();
     $conn->close();

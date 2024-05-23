@@ -11,8 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function() {
     let selectedMANV = null;
     let selectedEmployee = null;
-
-    fetch('../php/getEmployees.php')
+    fetch('../php/employee/getEmployees.php')
         .then(response => response.json())
         .then(employees => {
             const employeeListDiv = document.querySelector('.employee-list');
@@ -63,32 +62,27 @@ document.addEventListener('DOMContentLoaded', function() {
             if (confirmation) {
                 deleteEmployee(selectedEmployeeId);
             }
-        } else {
-            alert('Vui lòng chọn nhân viên để xóa.');
         }
     });
 
     const updateButton = document.getElementById('update-employee');
     updateButton.addEventListener('click', function() {
         if (selectedEmployee) {
-            openUpdateForm(selectedEmployee);
-        } else {
-            alert('Vui lòng chọn nhân viên để cập nhật.');
-        }
+            openUpdateNVForm(selectedEmployee);
+        } 
     });
 });
 
-
-
-function openForm() {
+function openAddNVForm() {
     document.getElementById("addEmployeeForm").style.display = "block";
 }
 
-function closeForm() {
+function closeAddNVForm() {
     document.getElementById("addEmployeeForm").style.display = "none";
 }
 
-function openUpdateForm(employee) {
+
+function openUpdateNVForm(employee) {
     document.getElementById('update-employee-id').value = employee.MANV;
     document.getElementById('update-employee-name').value = employee.HOTEN;
     document.getElementById('update-employee-dob').value = employee.NGAYSINH;
@@ -101,7 +95,7 @@ function openUpdateForm(employee) {
     document.getElementById('updateEmployeeForm').style.display = 'block';
 }
 
-function closeUpdateForm() {
+function closeUpdateNVForm() {
     document.getElementById('updateEmployeeForm').style.display = 'none';
 }
 
@@ -110,7 +104,7 @@ document.getElementById('add-employee-form').addEventListener('submit', function
 
     var formData = new FormData(this);
 
-    fetch('../php/add_employee.php', {
+    fetch('../php/employee/add_employee.php', {
         method: 'POST',
         body: formData
     })
@@ -124,12 +118,13 @@ document.getElementById('add-employee-form').addEventListener('submit', function
     });
 });
 
+
 document.getElementById('update-employee-form').addEventListener('submit', function(e) {
     e.preventDefault(); 
 
     var formData = new FormData(this); 
 
-    fetch('../php/update_employee.php', {
+    fetch('../php/employee/update_employee.php', {
         method: 'POST',
         body: formData 
     })
@@ -143,11 +138,8 @@ document.getElementById('update-employee-form').addEventListener('submit', funct
     });
 });
 
-
-
-
 function deleteEmployee(employeeId) {
-    fetch('../php/delete_employee.php', {
+    fetch('../php/employee/delete_employee.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -163,4 +155,5 @@ function deleteEmployee(employeeId) {
         console.error('Error:', error);
     });
 }
+
 

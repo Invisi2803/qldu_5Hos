@@ -1,6 +1,6 @@
 <?php
 
-require '../php/db_config.php';
+require '../../php/db_config.php';
 
 $data = json_decode(file_get_contents("php://input"));
 

@@ -1,5 +1,6 @@
 <?php
-require '../php/db_config.php';
+require '../../php/db_config.php';
+
 $sql = "SELECT nv.*, pb.TENPHONG FROM nhanvien nv, phongban pb WHERE nv.MAPHONGBAN = pb.MAPHONG";
 $result = $conn->query($sql);
 $nhan_vien = [];

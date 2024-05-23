@@ -1,5 +1,5 @@
 <?php
-require '../php/db_config.php';
+require '../../php/db_config.php';
 // Lấy dữ liệu từ form
 $employeeId = $_POST['new-employee-id'];
 $employeeName = $_POST['new-employee-name'];

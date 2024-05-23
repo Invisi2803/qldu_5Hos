@@ -1,14 +1,25 @@
-/* Thay đổi màu sắc và kiểu chữ */
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
 }
 label {
-  display: block; 
-  margin-bottom: 5px; 
-  font-weight: bold;
-}
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: bold;
+  }
+  
+  
+.form-container label,
+.form-container input {
+    display: block;
+    margin-bottom: 7px;
+  }
+
+  .form-container input[type="datetime-local"] {
+    margin-bottom: 20px; 
+  }
 header {
   background-color: #007bff;
   color: #fff;
@@ -17,7 +28,7 @@ header {
 }
 
 .search-container {
-  margin-top: -20px; /* Giảm giá trị margin-top */
+  margin-top: -20px; 
   text-align: center;
 }
 
@@ -38,7 +49,7 @@ input[type="text"] {
 }
 
 .management-buttons {
-  margin-top: 30px; /* Giảm giá trị margin-top */
+  margin-top: 30px;
   text-align: center;
 }
 
@@ -59,16 +70,16 @@ input[type="text"] {
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  padding: 15px; /* Increased padding */
-  border-radius: 8px; /* Increased border radius */
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Light shadow */
-  width: 50%; /* Adjusted width */
-  max-width: 400px; /* Added max-width for better responsiveness */
+  padding: 15px; 
+  border-radius: 8px; 
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
+  width: 50%; 
+  max-width: 400px; 
 }
 
 .form-popup h1 {
   text-align: center;
-  font-size: 18px; /* Increased font size */
+  font-size: 18px; 
 }
 
 .form-popup input[type="text"],
@@ -77,52 +88,52 @@ input[type="text"] {
 .form-popup input[type="date"],
 .form-popup select {
   width: 100%;
-  padding: 8px; /* Increased padding */
-  margin-bottom: 8px; /* Increased margin */
+  padding: 8px; 
+  margin-bottom: 8px; 
   border-radius: 5px;
   border: 1px solid #ccc;
-  font-size: 14px; /* Increased font size */
+  font-size: 14px; 
 }
 
 .button-container {
   display: flex;
-  justify-content: center; /* Centers the buttons horizontally */
-  gap: 10px; /* Adds space between the buttons */
+  justify-content: center; 
+  gap: 10px; 
 }
 
 .form-popup button {
-  padding: 8px 15px; /* Increased padding */
+  padding: 8px 15px; 
   border-radius: 5px;
   background-color: #007bff;
   color: #fff;
   border: none;
   cursor: pointer;
-  font-size: 14px; /* Increased font size */
+  font-size: 14px;
 }
 
 .form-popup button[type="button"] {
-  background-color: #6c757d; /* Different color for the close button */
+  background-color: #6c757d; 
 }
 
 .form-popup button:hover {
-  background-color: #0056b3; /* Darker shade for hover effect on submit button */
+  background-color: #0056b3; 
 }
 
 .form-popup button[type="button"]:hover {
-  background-color: #5a6268; /* Darker shade for hover effect on close button */
+  background-color: #5a6268; 
 }
 
-.employee-list {
+.meeting-list {
   margin-top: 20px;
 }
 
-.employee-list table {
+.meeting-list table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.employee-list th,
-.employee-list td {
+.meeting-list th,
+.meeting-list td {
   padding: 10px;
   border-bottom: 1px solid #ccc;
   text-align: left;
@@ -137,15 +148,4 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-}
-
-.form-container {
-  display: flex;
-  flex-wrap: wrap; /* Cho phép các phần tử con xuống dòng khi không đủ chỗ */
-}
-
-.form-group {
-  flex: 1 1 50%; /* Chia form thành hai cột */
-  padding: 0 10px; /* Khoảng cách giữa các cột */
-  box-sizing: border-box; /* Đảm bảo padding không tăng kích thước của phần tử */
 }

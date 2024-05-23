@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Bảng Tin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/qlbangtin.css">
+  <link rel="stylesheet" href="../css/header.css">
+</head>
+<body>
+   <div id="header"></div>
+   
+   
+   <div class="main-content">
+    <div class="search-container">
+      <input id="search-input" type="text" placeholder="Tìm kiếm bảng tin...">
+      <button id="search-button" type="button">Tìm Kiếm</button>
+    </div>
+
+    <div class="management-buttons">
+      <button onclick="openAddNewsForm()">Thêm</button>
+      <button id="delete-news" type="button">Xóa</button>
+      <button id="update-news" type="button">Cập nhật</button>
+    </div>
+       
+    <div class="form-popup" id="addNewsForm">
+  <form id="add-news-form" class="form-container" action="../php/news/add_news.php" method="post">
+    <h1>THÊM BẢNG TIN</h1>
+    <input type="text" id="new-news-id" name="new-news-id" placeholder="Mã bảng tin" required>
+    <input type="text" id="new-news-title" name="new-news-title" placeholder="Tiêu đề" required>
+    <select id="new-news-type" name="new-news-type" required>
+      <option value="">Loại bảng tin</option>
+      <option value="Thông báo khẩn">Thông báo khẩn</option>
+      <option value="Sự kiện">Sự kiện</option>
+      <option value="Chúc mừng vị trí mới">Chúc mừng vị trí mới</option>
+      <option value="Khen thưởng">Khen thưởng</option>
+    </select>
+    <input type="text" id="new-news-content" name="new-news-content" placeholder="Nội dung" required>
+    <label for="new-news-time">Ngày đăng :</label>
+    <input type="date" id="new-news-time" disabled>
+    <input type="hidden" id="hidden-news-time" name="new-news-time">
+    <div class="button-container">
+      <button type="submit">Thêm</button>
+      <button type="button" onclick="closeAddNewsForm()">Đóng</button>
+    </div>
+</form>
+</div>
+      <div class="form-popup" id="updateNewsForm">
+    <form id="update-news-form" class="form-container" action="../php/news/update_news.php" method="post">
+    <h1>CẬP NHẬT BẢNG TIN</h1>
+    <label for="update-news-id">Mã bảng tin :</label>
+    <input type="text" id="update-news-id" name="update-news-id" placeholder="Mã bảng tin" required readonly>
+    <label for="update-news-title">Tiêu đề :</label>
+    <input type="text" id="update-news-title" name="update-news-title" placeholder="Tiêu đề" required>
+    <label for="update-news-type">Loại bảng tin :</label>
+    <select id="update-news-type" name="update-news-type" required>
+                <option value="">Loại bảng tin</option>
+                <option value="Thông báo khẩn">Thông báo khẩn</option>
+                <option value="Sự kiện">Sự kiện</option>
+                <option value="Chúc mừng vị trí mới">Chúc mừng vị trí mới</option>
+                <option value="Khen thưởng">Khen thưởng</option>            
+    </select>
+    <label for="update-news-content">Nội dung bảng tin :</label>
+    <input type="text" id="update-news-content" name="update-news-content" placeholder="Nội dung bảng tin" required>
+    <label for="update-news-date">Ngày đăng :</label>
+    <input type="date" id="update-news-time" disabled>
+    <input type="hidden" id="hidden-news-time" name="update-news-time">
+    <div class="button-container">
+      <button type="submit">Cập nhật</button>
+      <button type="button" onclick="closeUpdateNewsForm()">Đóng</button>
+    </div>
+</form>
+</div>
+    <div class="news-list">
+      
+    </div>
+</div>
+   <footer>
+    <p>© 2024 Công Ty ABC</p>
+   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybV5y6lF9nM2KFnmnz4R8Z"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-QN/ajvnfHlyYDr31rzogX0SIFc/4qEj6A/Ni8BgWk9eRaSmTBI2Uj3yO0z+KTM2K"></script>
+  <script src="../js/news.js"></script>
+</body>
+</html>
