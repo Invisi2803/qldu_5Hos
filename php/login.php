@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 ob_start();
 require 'db_config.php';
@@ -14,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
             $_SESSION['login_user'] = $user['MANV'];
+            $_SESSION['user_role'] = $user['CHUCVU'];
             echo 'success';
         } else {
             echo 'Tên đăng nhập hoặc mật khẩu không đúng.';

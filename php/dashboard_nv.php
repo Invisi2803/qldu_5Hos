@@ -1,13 +1,10 @@
 <?php
 session_start();
-
-session_start();
-if (!isset($_SESSION['login_user']) || $_SESSION['user_role'] !== 'Quản lý') {
+if (!isset($_SESSION['login_user']) || $_SESSION['user_role'] !== 'Nhân viên') {
     header("location: ./login.php");
     exit;
 }
 ?>
-
 
 ?>
 <!DOCTYPE html>

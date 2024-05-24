@@ -8,25 +8,36 @@
     <title>Login Form</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+    $(document).ready(function() {
         $('#login-form').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: '../php/login.php',
-            data: $(this).serialize(),
-            success: function(response) {
-                console.log(response);
-                if(response.trim() === 'success') {
-                    window.location = '../html/dashboard.html';
-                } else {
-                    alert('Tên đăng nhập hoặc mật khẩu không đúng');
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: '../php/login.php',
+                data: $(this).serialize(),
+                success: function(response) {
+                    console.log(response);
+                    if(response.trim() === 'success') {
+                        $.ajax({
+                            type: "POST",
+                            url: '../php/get_user_role.php',
+                            success: function(role) {
+                                if (role.trim() === 'Quản lý') {
+                                    window.location = '../html/dashboard.html';
+                                } else {
+                                    window.location = '../html/dashboard_nv.html';
+                                }
+                            }
+                        });
+                    } else {
+                        alert('Tên đăng nhập hoặc mật khẩu không đúng');
+                    }
                 }
-            }
+            });
         });
     });
-});
-    </script>
+</script>
+
 </head>
 <body>
 

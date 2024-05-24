@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('../html/header.html')
+    fetch('../html/header_nv.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header').innerHTML = data;
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Tên cuộc họp</th>
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Nội dung</th>
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Thời gian</th>
-                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Địa điểm</th>
+                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Phòng họp</th>
                 </tr>
             `;
 

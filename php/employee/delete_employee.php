@@ -6,6 +6,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 if(isset($data->employeeId)) {
     $employeeId = $data->employeeId;
+
 }
 
 $sql = "DELETE FROM nhanvien WHERE MANV = ?";

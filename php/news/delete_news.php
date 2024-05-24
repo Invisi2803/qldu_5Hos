@@ -5,6 +5,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 if(isset($data->newsId)) {
     $newsId = $data->newsId;
+
 }
 
 $sql = "DELETE FROM bangtin WHERE MABANGTIN = ?";

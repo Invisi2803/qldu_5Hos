@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px; /* Giảm kích thước chữ chung */
+}
+
+.profile-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 18px; /* Giảm kích thước chữ tiêu đề */
+}
+
+.profile-info {
+    margin-top: 20px;
+}
+
+.profile-info p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 7px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+#avatar {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
