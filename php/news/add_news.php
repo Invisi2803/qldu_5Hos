@@ -1,11 +1,11 @@
 <?php
 require '../../php/db_config.php';
-// Lấy dữ liệu từ form
+
 $newsId = $_POST['new-news-id'];
 $newsTitle = $_POST['new-news-title'];
 $newsType = $_POST['new-news-type'];
 $newsContent = $_POST['new-news-content'];
-$newsDate = $_POST['new-news-time'];
+$newsDate = date('Y-m-d');
 
 
 

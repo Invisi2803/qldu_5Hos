@@ -16,7 +16,7 @@
   <!-- Nội dung chính -->
   <div class="main-content">
     <div class="search-container">
-      <input id="search-input" type="text" placeholde="Tìm kiếm nhân viên...">
+      <input id="search-input" type="text" placeholder="Tìm kiếm nhân viên...">
       <button id="search-button" type="button">Tìm Kiếm</button>
     </div>
 
@@ -28,7 +28,14 @@
 
     <div class="form-popup" id="addEmployeeForm">
   <form id="add-employee-form" class="form-container" action="../php/employee/add_employee.php" method="post">
-    <h1>THÊM NHÂN VIÊN</h1>
+    <h1>THÊM NHÂN VIÊN</h1>   
+    <div class="form-group">
+            <label for="new-employee-photo">Ảnh nhân viên:</label>
+            <input type="file" id="new-employee-photo" name="new-employee-photo" accept="image/*">
+            <div class="photo-preview-container">
+                <img id="new-employee-photo-preview" src="#" alt="Ảnh nhân viên" style="display: none;">
+            </div>
+        </div>
     <input type="text" id="new-employee-id" name="new-employee-id" placeholder="Mã NV" required>
     <input type="text" id="new-employee-name" name="new-employee-name" placeholder="Họ và tên" required>
     <input type="date" id="new-employee-dob" name="new-employee-dob" placeholder="Ngày sinh" required>
@@ -60,7 +67,7 @@
 </div>
       <div class="form-popup" id="updateEmployeeForm">
     <form id="update-employee-form" class="form-container" action="../php/employee/update_employee.php" method="post">
-        <h1>CẬP NHẬT NHÂN VIÊN</h1>
+        <h1>CẬP NHẬT THÔNG TIN NHÂN VIÊN</h1>
         <div class="form-group">
             <label for="update-employee-id">Mã nhân viên :</label>
             <input type="text" id="update-employee-id" name="update-employee-id" placeholder="Mã NV" required readonly>

@@ -1,25 +1,18 @@
-document.addEventListener("DOMContentLoaded", function() {
+
+document.addEventListener('DOMContentLoaded', function() {
     fetch('../html/header_nv.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header').innerHTML = data;
         })
         .catch(error => console.error('Error loading header:', error));
-});
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const dateField = document.getElementById('new-request-time');
-    const today = new Date().toISOString().split('T')[0];
-    dateField.value = today;
-});
-
-document.addEventListener('DOMContentLoaded', function() {
     let selectedRequest = null;
     let selectedMAYC = null;
+
     fetch('../php/request/getRequestNV.php')
         .then(response => response.json())
         .then(requests => {
-            const newsListDiv = document.querySelector('.request-list');
+            const requestListDiv = document.querySelector('.request-list');
             let tableHTML = "<table style='border-collapse: collapse; width: 100%;'>";
             tableHTML += `
                 <tr>
@@ -28,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Nội dung</th>
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Ngày gửi</th>
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Trạng thái</th>
-                    
                 </tr>
             `;
 
@@ -45,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             tableHTML += "</table>";
-            newsListDiv.innerHTML = tableHTML;
+            requestListDiv.innerHTML = tableHTML;
 
             document.querySelectorAll('.clickable-row').forEach(row => {
                 row.addEventListener('click', function() {
@@ -53,14 +45,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         otherRow.style.backgroundColor = "";
                     });
                     selectedMAYC = this.dataset.id; 
-                    selectedRequest = requests.find(requests => requests.MAYEUCAU === selectedMAYC);
-                    console.log(selectedMAYC);
+                    selectedRequest = requests.find(request => request.MAYEUCAU === selectedMAYC);
+                    console.log(selectedRequest);
                     this.style.backgroundColor = '#e0f7fa';
+                });
+            });
+
+            // Search functionality
+            document.getElementById("search-button").addEventListener("click", function() {
+                var searchInput = document.getElementById("search-input").value.trim().toLowerCase();
+                var rows = document.querySelectorAll('.clickable-row');
+                rows.forEach(function(row) {
+                    var requestId = row.cells[0].textContent.toLowerCase();
+                    row.style.display = requestId.includes(searchInput) ? "" : "none";
                 });
             });
         })
         .catch(error => console.error('Error:', error));
-    });
+});
+
     
 function openAddRequestForm() {
     document.getElementById("addRequestForm").style.display = "block";

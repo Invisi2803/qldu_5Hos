@@ -1,13 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     fetch('../html/header_nv.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header').innerHTML = data;
         })
         .catch(error => console.error('Error loading header:', error));
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+    let selectedNews = null;
+    let selectedMABT = null;
     fetch('../php/news/getNews.php')
         .then(response => response.json())
         .then(newss => {
@@ -34,11 +33,32 @@ document.addEventListener('DOMContentLoaded', function() {
                     </tr>
                 `;
             });
-
             tableHTML += "</table>";
             newsListDiv.innerHTML = tableHTML;
+
+            document.querySelectorAll('.clickable-row').forEach(row => {
+                row.addEventListener('click', function() {
+                    document.querySelectorAll('.clickable-row').forEach(otherRow => {
+                        otherRow.style.backgroundColor = "";
+                    });
+                    selectedMABT = this.dataset.id; 
+                    selectedNews = newss.find(news => news.MABANGTIN === selectedMABT);
+                    console.log(selectedNews);
+                    this.style.backgroundColor = '#e0f7fa';
+                });
+            });
+            
+            document.getElementById("search-button").addEventListener("click", function() {
+                var searchInput = document.getElementById("search-input").value.trim().toLowerCase();
+                var rows = document.querySelectorAll('.clickable-row');
+                rows.forEach(function(row) {
+                    var newsID = row.cells[0].textContent.toLowerCase();
+                    row.style.display = newsID.includes(searchInput) ? "" : "none";
+                });
+            });
         })
-        .catch(error => console.error('Error fetching news:', error));
+        .catch(error => console.error('Error:', error));
+
 });
 
 document.addEventListener('DOMContentLoaded', function() {

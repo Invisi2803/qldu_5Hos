@@ -34,7 +34,29 @@
                     <p><strong>Phòng Ban:</strong> <span id="ma-phong-ban"></span></p>
                     <p><strong>Địa Chỉ:</strong> <span id="dia-chi"></span></p>
                 </div>
+                <button class="btn btn-primary btn-narrow" id="edit-profile-btn">Chỉnh sửa</button>
             </div>
+            <div id="birthday-message" style="display: none; color: red; font-size: 20px;">
+    Chúc mừng sinh nhật!
+</div>
+        </div>
+
+        <div class="form-popup" id="editProfileForm" style="display: none;">
+            <form id="update-profile-form" class="form-container">
+                <h1>Chỉnh sửa thông tin</h1>
+                <label for="update-profile-phone"><b>Số ĐT</b></label>
+                <input type="text" id="update-profile-phone" name="so-dt" required>
+
+                <label for="update-profile-address"><b>Địa Chỉ</b></label>
+                <input type="text" id="update-profile-address" name="dia-chi" required>
+
+                <label for="update-profile-email"><b>Email</b></label>
+                <input type="email" id="update-profile-email" name="email" required>
+                <div class="button-container">
+                <button type="submit">Cập nhật</button>
+                <button type="button" onclick="closeEditProfileForm()">Đóng</button>
+    </div>
+            </form>
         </div>
     </div>
     <footer>

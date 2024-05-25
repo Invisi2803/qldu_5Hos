@@ -43,3 +43,68 @@ footer {
     margin: 0 auto;
     border-radius: 50%;
 }
+
+.btn-narrow {
+    width: 50px; 
+}
+
+
+.form-popup {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 15px; 
+  border-radius: 8px; 
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
+  width: 50%; 
+  max-width: 400px; 
+}
+
+.form-popup h1 {
+  text-align: center;
+  font-size: 18px; 
+}
+
+.form-popup input[type="text"],
+.form-popup input[type="email"],
+.form-popup input[type="password"],
+.form-popup input[type="date"],
+.form-popup select {
+  width: 100%;
+  padding: 8px; 
+  margin-bottom: 8px; 
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px; 
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; 
+  gap: 10px; 
+}
+
+.form-popup button {
+  padding: 8px 15px; 
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.form-popup button[type="button"] {
+  background-color: #6c757d; 
+}
+
+.form-popup button:hover {
+  background-color: #0056b3; 
+}
+
+.form-popup button[type="button"]:hover {
+  background-color: #5a6268; 
+}

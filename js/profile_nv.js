@@ -28,8 +28,62 @@ window.onload = function() {
                 document.getElementById('chuc-vu').textContent = user.CHUCVU;
                 document.getElementById('dia-chi').textContent = user.DIACHI;
                 document.getElementById('email').textContent = user.EMAIL;
+                var ngaySinh = new Date(user.NGAYSINH);
+                var today = new Date();
+                var month = today.getMonth() + 1;
+                var date = today.getDate();
+
+                if (ngaySinh.getDate() === date && ngaySinh.getMonth() + 1 === month) {
+                    var birthdayMessage = document.getElementById('birthday-message');
+                    birthdayMessage.style.display = 'block';
+                }
             }
         })
         .catch(error => console.error('Error:', error));
 };
+
+document.getElementById('edit-profile-btn').addEventListener('click', function() {
+    openEditProfileForm();
+});
+
+function openEditProfileForm() {
+    fetch('../php/profile.php')
+        .then(response => response.json())
+        .then(profile => {
+            if (profile.error) {
+                alert(profile.error);
+            } else {
+                document.getElementById('update-profile-address').value = profile.DIACHI;
+                document.getElementById('update-profile-email').value = profile.EMAIL;
+                document.getElementById('update-profile-phone').value = profile.SODT;
+                document.getElementById("editProfileForm").style.display = "block";
+            }
+        })
+        .catch(error => console.error('Error fetching profile:', error));
+}
+
+function closeEditProfileForm() {
+    document.getElementById("editProfileForm").style.display = "none";
+}
+
+document.getElementById('update-profile-form').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+
+    var formData = new FormData(this); 
+
+    fetch('../php/profile/update_profile.php', {
+        method: 'POST',
+        body: formData 
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); 
+        window.location.reload(); 
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+
 

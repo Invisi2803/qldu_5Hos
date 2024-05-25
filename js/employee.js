@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     fetch('../html/header.html')
         .then(response => response.text())
@@ -5,12 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('header').innerHTML = data;
         })
         .catch(error => console.error('Error loading header:', error));
-});
 
-
-document.addEventListener('DOMContentLoaded', function() {
     let selectedMANV = null;
     let selectedEmployee = null;
+
     fetch('../php/employee/getEmployees.php')
         .then(response => response.json())
         .then(employees => {
@@ -37,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     </tr>
                 `;
             });
-
             tableHTML += "</table>";
             employeeListDiv.innerHTML = tableHTML;
 
@@ -49,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     selectedMANV = this.dataset.id; 
                     selectedEmployee = employees.find(employee => employee.MANV === selectedMANV);               
                     this.style.backgroundColor = '#e0f7fa';
+                });
+            });
+
+            document.getElementById("search-button").addEventListener("click", function() {
+                var searchInput = document.getElementById("search-input").value.trim().toLowerCase();
+                var rows = document.querySelectorAll('.clickable-row');
+                rows.forEach(function(row) {
+                    var employeeName = row.cells[0].textContent.toLowerCase();
+                    row.style.display = employeeName.includes(searchInput) ? "" : "none";
                 });
             });
         })
@@ -156,4 +165,15 @@ function deleteEmployee(employeeId) {
     });
 }
 
+document.getElementById('new-employee-photo').addEventListener('change', function() {
+    var file = this.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('new-employee-photo-preview').setAttribute('src', e.target.result);
+            document.getElementById('new-employee-photo-preview').style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    }
+});
 

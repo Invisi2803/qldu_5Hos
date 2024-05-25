@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user = $result->fetch_assoc();
             $_SESSION['login_user'] = $user['MANV'];
             $_SESSION['user_role'] = $user['CHUCVU'];
+            $_SESSION['date_birth'] = $user['NGAYSINH'];
             echo 'success';
         } else {
             echo 'Tên đăng nhập hoặc mật khẩu không đúng.';

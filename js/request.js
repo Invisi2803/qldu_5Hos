@@ -1,13 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
+
+document.addEventListener('DOMContentLoaded', function() {
     fetch('../html/header.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header').innerHTML = data;
         })
         .catch(error => console.error('Error loading header:', error));
-});
-
-document.addEventListener('DOMContentLoaded', function() {
     let selectedRequest = null;
     let selectedMAYC = null;
     fetch('../php/request/getRequest.php')
@@ -52,6 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     selectedRequest = requests.find(requests => requests.MAYEUCAU === selectedMAYC);
                     console.log(selectedMAYC);
                     this.style.backgroundColor = '#e0f7fa';
+                });
+            });
+            document.getElementById("search-button").addEventListener("click", function() {
+                var searchInput = document.getElementById("search-input").value.trim().toLowerCase();
+                var rows = document.querySelectorAll('.clickable-row');
+                rows.forEach(function(row) {
+                    var newsID = row.cells[0].textContent.toLowerCase();
+                    row.style.display = newsID.includes(searchInput) ? "" : "none";
                 });
             });
         })

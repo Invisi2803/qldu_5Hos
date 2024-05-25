@@ -28,8 +28,18 @@ window.onload = function() {
                 document.getElementById('chuc-vu').textContent = user.CHUCVU;
                 document.getElementById('dia-chi').textContent = user.DIACHI;
                 document.getElementById('email').textContent = user.EMAIL;
+                var ngaySinh = new Date(user.NGAYSINH);
+                var today = new Date();
+                var month = today.getMonth() + 1;
+                var date = today.getDate();
+
+                if (ngaySinh.getDate() === date && ngaySinh.getMonth() + 1 === month) {
+                    var birthdayMessage = document.getElementById('birthday-message');
+                    birthdayMessage.style.display = 'block';
+                }
             }
         })
         .catch(error => console.error('Error:', error));
 };
+
 
