@@ -58,9 +58,13 @@ nav ul li a:focus {
 }
 
 footer {
-  background: #333;
-  color: white;
+  background-color: #000;
+  color: #fff;
+  padding: 7px;
   text-align: center;
-  padding: 10px 0;
-  margin-top: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
+
