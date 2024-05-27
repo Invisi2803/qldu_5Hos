@@ -10,6 +10,7 @@ try {
     $meetingAddress = $_POST['new-meeting-address'];
 
 
+
     $checkSql = "SELECT * FROM lichhop WHERE DATE(THOIGIAN) = DATE(?) AND DIADIEM = ?";
     $checkStmt = $conn->prepare($checkSql);
     $checkStmt->bind_param("ss", $meetingTime, $meetingAddress);
@@ -19,9 +20,9 @@ try {
     if ($result->num_rows > 0) {
         echo "Phòng họp đã đặt lịch cho ngày này.";
     } else {
-        $sql = "INSERT INTO lichhop (MALICHHOP, TENLICHHOP, NOIDUNG, THOIGIAN, DIADIEM) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO lichhop (MALICHHOP, TENLICHHOP, NOIDUNG, THOIGIAN, DIADIEM, THAMDU) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss", $meetingId, $meetingName, $meeetingContent, $meetingTime, $meetingAddress);
+        $stmt->bind_param("ssssss", $meetingId, $meetingName, $meeetingContent, $meetingTime, $meetingAddress);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {

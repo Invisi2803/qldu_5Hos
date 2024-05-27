@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Tên</th>
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Ngày sinh</th>
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Email</th>
-                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Số điện thoại</th>
+                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Phòng ban</th>
+                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Chức vụ</th>
                 </tr>
             `;
 
@@ -34,7 +35,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.HOTEN}</td>
                         <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.NGAYSINH}</td>
                         <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.EMAIL}</td>
-                        <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.SODT}</td>
+                        <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.TENPHONG}</td>
+                        <td style='padding: 10px; border-bottom: 1px solid #ddd;'>${employee.CHUCVU}</td>
                     </tr>
                 `;
             });
