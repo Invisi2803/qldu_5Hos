@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let tableHTML = "<table style='border-collapse: collapse; width: 100%;'>";
             tableHTML += `
                 <tr>
-                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Mã bảng tin</th>
+                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Mã thông báo</th>
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Tiêu đề</th>
-                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Loại bảng tin</th>
+                    <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Loại thông báo</th>
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Nội dung</th>
                     <th style='background-color: #4CAF50; color: white; padding: 10px; text-align: left;'>Ngày đăng</th>
                 </tr>
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     deleteButton.addEventListener('click', function() {
         const selectedNewsId = selectedMABT;
         if (selectedNewsId) {
-            const confirmation = confirm('Bạn có chắc chắn muốn xóa bảng tin này không?');
+            const confirmation = confirm('Bạn có chắc chắn muốn xóa thông báo này không?');
             if (confirmation) {
                 deleteNews(selectedNewsId);
             }
