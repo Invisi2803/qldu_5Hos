@@ -7,13 +7,10 @@ body {
 }
 
 header {
-  background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-  color: white;
-  padding: 10px 0;
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px;
   text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
 nav ul {
