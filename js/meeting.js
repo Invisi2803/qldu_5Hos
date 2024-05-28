@@ -60,22 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Error:', error));
 
 
-    const deleteButton = document.getElementById('delete-meeting');
-    deleteButton.addEventListener('click', function() {
-        const selectedMeetingId = selectedMALH;
-        if (selectedMeetingId) {
-            const confirmation = confirm('Bạn có chắc chắn muốn xóa lịch họp này không?');
-            if (confirmation) {
-                deleteMeeting(selectedMeetingId);
-            }
-        } 
-    });
-    const updateButton = document.getElementById('update-meeting');
-    updateButton.addEventListener('click', function() {
-        if (selectedMeeting) {
-            openUpdateLHForm(selectedMeeting);
-        }
-    });
 });
 
 function openAddLHForm() {
@@ -86,18 +70,7 @@ function closeAddLHForm() {
     document.getElementById("addMeetingForm").style.display = "none";
 }
 
-function openUpdateLHForm(meeting) {
-    document.getElementById('update-meeting-id').value = meeting.MALICHHOP;
-    document.getElementById('update-meeting-name').value = meeting.TENLICHHOP;
-    document.getElementById('update-meeting-content').value = meeting.NOIDUNG;
-    document.getElementById('update-meeting-time').value = meeting.THOIGIAN;
-    document.getElementById('update-meeting-address').value = meeting.DIADIEM;
-    document.getElementById('updateMeetingForm').style.display = 'block';
-}
 
-function closeUpdateLHForm() {
-    document.getElementById("updateMeetingForm").style.display = "none";
-}
 
 document.getElementById('add-meeting-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -118,40 +91,5 @@ document.getElementById('add-meeting-form').addEventListener('submit', function(
     });
 });
 
-document.getElementById('update-meeting-form').addEventListener('submit', function(e) {
-    e.preventDefault(); 
 
-    var formData = new FormData(this); 
-
-    fetch('../php/meeting/update_meeting.php', {
-        method: 'POST',
-        body: formData 
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data); 
-        window.location.reload(); 
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-});
-
-function deleteMeeting(meetingId) {
-    fetch('../php/meeting/delete_meeting.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ meetingId: meetingId })
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data); 
-        window.location.reload();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
 

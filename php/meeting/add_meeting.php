@@ -20,9 +20,9 @@ try {
     if ($result->num_rows > 0) {
         echo "Phòng họp đã đặt lịch cho ngày này.";
     } else {
-        $sql = "INSERT INTO lichhop (MALICHHOP, TENLICHHOP, NOIDUNG, THOIGIAN, DIADIEM, THAMDU) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO lichhop (MALICHHOP, TENLICHHOP, NOIDUNG, THOIGIAN, DIADIEM) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssss", $meetingId, $meetingName, $meeetingContent, $meetingTime, $meetingAddress);
+        $stmt->bind_param("sssss", $meetingId, $meetingName, $meeetingContent, $meetingTime, $meetingAddress);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {

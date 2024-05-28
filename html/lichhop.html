@@ -20,14 +20,12 @@
     </div>
 
     <div class="management-buttons">
-      <button onclick="openAddLHForm()">Thêm</button>
-      <button id="delete-meeting" type="button">Xóa</button>
-      <button id="update-meeting" type="button">Cập nhật</button>
+      <button onclick="openAddLHForm()">Đăng ký lịch phòng họp</button>
     </div>
        
     <div class="form-popup" id="addMeetingForm">
   <form id="add-meeting-form" class="form-container" action="../php/meeting/add_meeting.php" method="post">
-    <h1>THÊM LỊCH PHÒNG HỌP</h1>
+    <h1>ĐĂNG KÝ LỊCH PHÒNG HỌP</h1>
     <input type="text" id="new-meeting-id" name="new-meeting-id" placeholder="Mã lịch họp" required>
     <input type="text" id="new-meeting-name" name="new-meeting-name" placeholder="Tên cuộc họp" required>
     <input type="text" id="new-meeting-content" name="new-meeting-content" placeholder="Nội dung cuộc họp" required>
@@ -48,29 +46,7 @@
     </div>
 </form>
 </div>
-     <div class="form-popup" id="updateMeetingForm">
-     <form id="update-meeting-form" class="form-container" action="../php/meeting/update_meeting.php" method="post">
-    <h1>CẬP NHẬT LỊCH PHÒNG HỌP</h1>
-    <input type="text" id="update-meeting-id" name="update-meeting-id" placeholder="Mã lịch họp" required>
-    <input type="text" id="update-meeting-name" name="update-meeting-name" placeholder="Tên cuộc họp" required>
-    <input type="text" id="update-meeting-content" name="update-meeting-content" placeholder="Nội dung cuộc họp" required>
-    <label for="update-meeting-time">Thời gian :</label>
-    <input type="datetime-local" id="update-meeting-time" name="update-meeting-time" required>
-    <select id="update-meeting-address" name="update-meeting-address" required>
-      <option value="">Chọn phòng họp</option>
-      <option value="Phòng A">Phòng A</option>
-      <option value="Phòng B">Phòng B</option>
-      <option value="Phòng C">Phòng C</option>
-      <option value="Phòng C">Phòng D</option>
-      <option value="Phòng C">Phòng E</option>
-    </select>
-    <div class="button-container">
-      <button type="submit">Đăng ký</button>
       
-      <button type="button" onclick="closeUpdateLHForm()">Đóng</button>
-</div>
-</form>
-</div>
     <div class="meeting-list">
       
     </div>
@@ -80,6 +56,6 @@
    </footer>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybV5y6lF9nM2KFnmnz4R8Z"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-QN/ajvnfHlyYDr31rzogX0SIFc/4qEj6A/Ni8BgWk9eRaSmTBI2Uj3yO0z+KTM2K"></script>
-  <script src="../js/meeting2.js"></script>
+  <script src="../js/meeting.js"></script>
 </body>
 </html>

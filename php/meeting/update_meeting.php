@@ -6,7 +6,7 @@ $meetingContent = $_POST['update-meeting-content'];
 $meetingTime = $_POST['update-meeting-time'];
 $meetingAddress = $_POST['update-meeting-address'];
 
-$sql = "UPDATE lichhop SET TENLICHHOP = ?, NOIDUNG = ?, THOIGIAN = ?, PHONGHOP = ? WHERE MALICHHOP = ?";
+$sql = "UPDATE lichhop SET TENLICHHOP = ?, NOIDUNG = ?, THOIGIAN = ?, DIADIEM = ? WHERE MALICHHOP = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssss", $meetingName, $meetingContent, $meetingTime, $meetingAddress, $meetingId);
 
