@@ -17,7 +17,7 @@ $stmt->bind_param("sssss", $newsId, $newsTitle, $newsType, $newsContent, $newsDa
 $stmt->execute();
 
 if ($stmt->affected_rows > 0) {
-    echo "Thêm bảng tin mới thành công";
+    echo "Thêm thông báo mới thành công";
 } else {
     echo "Thêm không thành công";
 }

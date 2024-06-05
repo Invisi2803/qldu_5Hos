@@ -4,11 +4,11 @@ $newsId = $_POST['update-news-id'];
 $newsTitle = $_POST['update-news-title'];
 $newsType = $_POST['update-news-type'];
 $newsContent = $_POST['update-news-content'];
-$newsDate = $_POST['update-news-time'];
+//$newsDate = $_POST['update-news-time'];
 
-$sql = "UPDATE bangtin SET TIEUDE = ?, LOAIBANGTIN = ?, NOIDUNG = ?, NGAYDANG = ? WHERE MABANGTIN = ?";
+$sql = "UPDATE bangtin SET TIEUDE = ?, LOAIBANGTIN = ?, NOIDUNG = ? WHERE MABANGTIN = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $newsTitle, $newsType, $newsContent, $newsDate, $newsId);
+    $stmt->bind_param("ssss", $newsTitle, $newsType, $newsContent, $newsId);
 
     $stmt->execute();
 

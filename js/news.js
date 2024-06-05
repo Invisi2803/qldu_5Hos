@@ -88,14 +88,28 @@ function closeAddNewsForm() {
 }
 
 function openUpdateNewsForm(news) {
-    document.getElementById('update-news-id').value = news.MABANGTIN;
-    document.getElementById('update-news-title').value = news.TIEUDE;
-    document.getElementById('update-news-type').value = news.LOAIBANGTIN;
-    document.getElementById('update-news-content').value = news.NOIDUNG;
-    document.getElementById('update-news-time').value = news.NGAYDANG;
-    document.getElementById('updateNewsForm').style.display = 'block';
-}
+        const newsIdElement = document.getElementById('update-news-id');
+        const newsTitleElement = document.getElementById('update-news-title');
+        const newsTypeElement = document.getElementById('update-news-type');
+        const newsContentElement = document.getElementById('update-news-content');
 
+        console.log("Elements:", {
+            newsIdElement,
+            newsTitleElement,
+            newsTypeElement,
+            newsContentElement
+        });
+
+        if (newsIdElement && newsTitleElement && newsTypeElement && newsContentElement) {
+            newsIdElement.value = news.MABANGTIN;
+            newsTitleElement.value = news.TIEUDE;
+            newsTypeElement.value = news.LOAIBANGTIN;
+            newsContentElement.value = news.NOIDUNG;
+            document.getElementById('updateNewsForm').style.display = 'block';
+        } else {
+            console.error("One or more elements not found");
+        }
+    }
 function closeUpdateNewsForm() {
     document.getElementById("updateNewsForm").style.display = "none";
 }
